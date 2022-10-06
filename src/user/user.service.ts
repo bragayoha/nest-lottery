@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './user.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -16,12 +17,12 @@ export class UserService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async findAllUsers(): Promise<User[]> {
+  async getAllUsers(): Promise<User[]> {
     const users = await this.usersRepository.find();
     return users;
   }
 
-  async findUserById(id: string): Promise<User> {
+  async getUserById(id: string): Promise<User> {
     const user = await this.usersRepository.findOneBy({ id });
     if (!user) throw new NotFoundException('User not found');
     return user;
@@ -36,14 +37,14 @@ export class UserService {
   }
 
   async updateUser(id: string, data: UpdateUserInput): Promise<User> {
-    const user = await this.findUserById(id);
+    const user = await this.getUserById(id);
     await this.usersRepository.update(user, { ...data });
     const userUpdated = this.usersRepository.create({ ...user, ...data });
     return userUpdated;
   }
 
   async deleteUser(id: string): Promise<boolean> {
-    const user = await this.findUserById(id);
+    const user = await this.getUserById(id);
     const deleted = await this.usersRepository.delete(user);
     if (deleted) return true;
     return false;

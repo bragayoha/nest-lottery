@@ -4,23 +4,23 @@ import { IsEmail, IsOptional, IsString, IsNotEmpty } from 'class-validator';
 
 @InputType()
 export class UpdateUserInput {
-  @IsString()
-  @IsNotEmpty({ message: 'Campo de name obrigatório' })
   @IsOptional()
+  @IsString()
+  @IsNotEmpty({ message: 'Name is required' })
   name?: string;
 
-  @IsString()
-  @IsNotEmpty({ message: 'Campo de cpf obrigatório' })
   @IsOptional()
+  @IsString()
+  @IsNotEmpty({ message: 'CPF is required' })
   cpf?: string;
 
-  @IsEmail()
-  @IsNotEmpty({ message: 'Campo de email obrigatório' })
   @IsOptional()
+  @IsEmail()
+  @IsNotEmpty({ message: 'E-mail is required' })
   email?: string;
 
-  @IsString()
-  @IsNotEmpty({ message: 'Campo de password obrigatório' })
   @IsOptional()
+  @IsString()
+  @IsNotEmpty({ message: 'Password is required' })
   password?: string;
 }
