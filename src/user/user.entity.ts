@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
 import { hashPasswordTransform } from 'src/helpers/crypto';
+import { Role } from 'src/role/role.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
@@ -24,4 +25,6 @@ export class User {
   })
   @HideField()
   password: string;
+  
+  roles: Role[]
 }
