@@ -8,6 +8,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
+import { GamesModule } from './games/games.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { RoleModule } from './role/role.module';
     }),
     UserModule,
     RoleModule,
+    GamesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

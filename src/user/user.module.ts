@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 import { UserResolver } from './user.resolver';
 import { User } from './user.entity';
 import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from 'src/role/roles.gard';
+import { RolesGuard } from 'src/role/roles.guard';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
