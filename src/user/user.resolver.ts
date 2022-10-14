@@ -6,23 +6,23 @@ import { UserService } from './user.service';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(private usersService: UserService) {}
+  constructor(private userService: UserService) {}
 
   @Query(() => [User])
   async users(): Promise<User[]> {
-    const users = await this.usersService.getAllUsers();
+    const users = await this.userService.getAllUsers();
     return users;
   }
 
   @Query(() => User)
   async user(@Args('id') id: string): Promise<User> {
-    const user = await this.usersService.getUserById(id);
+    const user = await this.userService.getUserById(id);
     return user;
   }
 
   @Mutation(() => User)
   async createUser(@Args('data') data: CreateUserInput): Promise<User> {
-    const user = await this.usersService.createUser(data);
+    const user = await this.userService.createUser(data);
     return user;
   }
 
@@ -31,13 +31,13 @@ export class UserResolver {
     @Args('id') id: string,
     @Args('data') data: UpdateUserInput,
   ): Promise<User> {
-    const user = this.usersService.updateUser(id, data);
+    const user = this.userService.updateUser(id, data);
     return user;
   }
 
   @Mutation(() => Boolean)
   async deleteUser(@Args('id') id: string): Promise<boolean> {
-    const deleted = await this.usersService.deleteUser(id);
+    const deleted = await this.userService.deleteUser(id);
     return deleted;
   }
 }

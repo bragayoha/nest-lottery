@@ -29,5 +29,5 @@ export class User {
   
   @OneToMany(() => Bet, bets => bets.user)
   bets: Bet[];
-  // roles: Role[]
+  // roles: Role[] /
 }
