@@ -9,6 +9,7 @@ import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
 import { GamesModule } from './games/games.module';
+import { BetModule } from './bet/bet.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { GamesModule } from './games/games.module';
     UserModule,
     RoleModule,
     GamesModule,
+    BetModule,
   ],
   controllers: [AppController],
   providers: [AppService],
